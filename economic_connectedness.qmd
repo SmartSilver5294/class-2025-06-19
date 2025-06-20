@@ -6,5 +6,31 @@ format: html
 
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(primer.data)
+library(ggplot2)
+library(scales)  # For better axis formatting
+
+
+ggplot(connectedness, aes(x = population, y = connectedness)) +
+  geom_point(alpha = 0.5, color = "black", size = 1.5) +
+  scale_x_continuous(trans = "log10", labels = comma) +
+  labs(title = "County Connectedness by Population",
+       subtitle = "Larger populations tend to have higher connectedness scores",
+       x = "Population (log scale)",
+       y = "Connectedness Score",
+       caption = "Data from tidyverse dataset") +
+  theme_minimal(base_size = 12) +
+  theme(plot.title = element_text(face = "bold"),
+        panel.grid.minor = element_blank()) +
+        geom_smooth(method = "lm", color = "red")
+```
+
+
+```{r}
 
 ```
