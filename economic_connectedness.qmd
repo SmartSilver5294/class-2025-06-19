@@ -13,6 +13,26 @@ format: html
 library(tidyverse)
 library(primer.data)
 library(ggplot2)
+library(scales) 
+
+ggplot(connectedness, aes(x = log10(population))) +
+  geom_histogram(binwidth = 0.075, fill = "skyblue", color = "white") +
+  labs(
+    title = "Histogram of Country Populations (Log Scale)",
+    x = "Log10 Population",
+    y = "Number of Countries"
+  ) +
+  theme_minimal()
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(primer.data)
+library(ggplot2)
 library(scales)  # For better axis formatting
 
 
@@ -28,9 +48,4 @@ ggplot(connectedness, aes(x = population, y = connectedness)) +
   theme(plot.title = element_text(face = "bold"),
         panel.grid.minor = element_blank()) +
         geom_smooth(method = "lm", color = "red")
-```
-
-
-```{r}
-
 ```
